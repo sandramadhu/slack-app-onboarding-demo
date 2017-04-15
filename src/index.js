@@ -3,6 +3,14 @@ const ts = require('tinyspeck'),
       {PORT, TOKEN} = process.env,
       users = {};
 
+var Client = require('node-rest-client').Client;
+var client = new Client();
+
+
+client.get("http://dev.virtualearth.net/REST/v1/Locations/CA/adminDistrict/postalCode/locality/addressLine?includeNeighborhood=includeNeighborhood&include=includeValue&maxResults=maxResults&key=BingMapsKey", function(data, response) {
+   console.log(data);
+   console.log(response);
+});
 
 // setting defaults for all Slack API calls
 let slack = ts.instance({ token: TOKEN });
